@@ -1,7 +1,7 @@
 import express from "express";
 import db from "./app/models/index.js";
 import initializeRoutes from "./app/routes/movie.routes.js";
-import setupDatabase from "./app/config/db.setup.js";
+import { checkDatabaseExists } from "./app/config/db.js";
 
 const app = express();
 
@@ -11,7 +11,7 @@ initializeRoutes(app);
 
 async function initializeApp() {
   try {
-    await setupDatabase();
+    await checkDatabaseExists();
     await db.sequelize.sync();
     console.log("##### Database synchronized successfully");
 

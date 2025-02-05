@@ -3,9 +3,12 @@
 ## Contents
 
 - Application
+  - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
 
 ## Application
+
+### billing-app
 
 ### inventory-app
 

@@ -1,9 +1,11 @@
 import Sequelize from "sequelize";
+import config from "../config/config.cjs";
 import defineMovie from "./movie.model.js";
-import dbConfig from "../config/db.config.js";
 
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
+const dbConfig = config.development;
+
+const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+  host: dbConfig.host,
   dialect: dbConfig.dialect,
   pool: dbConfig.pool,
 });
