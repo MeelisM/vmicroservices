@@ -17,7 +17,7 @@ async function initializeApp() {
 
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
-      console.log(`##### Server is running on port ${PORT}.`);
+      console.log(`##### Inventory service is running on port ${PORT}.`);
       console.log("##### CTRL + C to quit.");
     });
   } catch (err) {
