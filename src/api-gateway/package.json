@@ -14,7 +14,11 @@
     "amqplib": "^0.10.5",
     "express": "^4.21.2",
     "http-proxy": "^1.18.1",
+    "http-proxy-middleware": "^3.0.3",
     "js-yaml": "^4.1.0",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
   }
 }
