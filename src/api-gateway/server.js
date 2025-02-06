@@ -21,16 +21,6 @@ app.use(morgan("dev"));
 const proxyOptions = {
   target: "http://localhost:8080/api/movies",
   changeOrigin: true,
-  onProxyReq: (proxyReq, req, res) => {
-    console.log(`Proxying request: ${req.method} ${req.originalUrl}`);
-    console.log(`Original URL: ${req.originalUrl}`);
-    console.log(`Proxying to: ${proxyReq.url}`);
-    console.log(`"Request Headers:", req.headers`);
-  },
-  onError: (err, req, res) => {
-    console.error("Proxy error:", err);
-    res.status(500).json({ message: "Proxying error occurred." });
-  },
 };
 
 app.use("/api/movies", createProxyMiddleware(proxyOptions));
