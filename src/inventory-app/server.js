@@ -2,9 +2,11 @@ import express from "express";
 import db from "./app/models/index.js";
 import initializeRoutes from "./app/routes/movie.routes.js";
 import { checkDatabaseExists } from "./app/config/db.js";
+import morgan from "morgan";
 
 const app = express();
 
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 initializeRoutes(app);

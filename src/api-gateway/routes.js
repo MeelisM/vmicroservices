@@ -4,7 +4,7 @@ import { sendToQueue } from "./rabbitmq.js";
 const router = express.Router();
 
 // Convert HTTP request to RabbitMQ message
-router.post("/api/billing", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const orderData = {
       user_id: req.body.user_id,
