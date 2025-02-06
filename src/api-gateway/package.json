@@ -4,7 +4,7 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "routes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,6 +14,5 @@
     "amqplib": "^0.10.5",
     "express": "^4.21.2",
     "http-proxy-middleware": "^3.0.3"
-  },
-  "devDependencies": {}
+  }
 }

@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  title: Movie Streaming Platform API
+  description: API for managing movies and processing orders
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+    description: Development server
+
+paths:
+  /api/movies:
+    get:
+      summary: Get all movies
+      parameters:
+        - in: query
+          name: title
+          schema:
+            type: string
+          description: Filter movies by title
+      responses:
+        "200":
+          description: List of movies
+
+    post:
+      summary: Create a new movie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+      responses:
+        "201":
+          description: Movie created successfully
+
+    delete:
+      summary: Delete all movies
+      responses:
+        "200":
+          description: All movies deleted successfully
+
+  /api/movies/{id}:
+    get:
+      summary: Get movie by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Movie details
+
+    put:
+      summary: Update movie by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+      responses:
+        "200":
+          description: Movie updated successfully
+
+    delete:
+      summary: Delete movie by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Movie deleted successfully
+
+  /api/billing:
+    post:
+      summary: Create a new order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                number_of_items:
+                  type: integer
+                total_amount:
+                  type: number
+              required:
+                - user_id
+                - number_of_items
+                - total_amount
+      responses:
+        "200":
+          description: Order queued successfully
+        "500":
+          description: Error processing order
