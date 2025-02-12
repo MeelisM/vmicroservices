@@ -1,11 +1,19 @@
 #!/bin/bash
-# Load environment variables from root directory's .env file if it exists
-if [ -f "../../.env" ]; then
-    export $(cat ../../.env | grep -v '#' | awk '/=/ {print $1}')
-    echo "Loaded environment variables from ../.env"
-else
-    echo "No .env file found in parent directory"
+
+# Load environment variables if not already loaded
+if [ -z "$INVENTORY_DB_USER" ]; then
+    if [ -f "/home/vagrant/root/.env" ]; then
+        export $(cat /home/vagrant/root/.env | grep -v '#' | awk '/=/ {print $1}')
+        echo "Loaded environment variables from .env"
+    else
+        echo "No .env file found!"
+        exit 1
+    fi
 fi
+
+echo "Setting up database with:"
+echo "User: $INVENTORY_DB_USER"
+echo "Database: $INVENTORY_DB_NAME"
 
 # Connect as postgres user to set up inventory user and database
 sudo -u postgres psql << EOF

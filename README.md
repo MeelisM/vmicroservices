@@ -1,12 +1,18 @@
 # crud-master
 
-## Contents
+## Table of contents
 
 - Application
+  - [Diagram](#diagram)
   - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
+  - [api-gateway](#api-gateway)
 
 ## Application
+
+### Diagram
+
+![image](/images/diagram.jpg)
 
 ### billing-app
 
@@ -35,3 +41,5 @@ Roll back all database migrations.
 ```
 npm run db:migrate:undo:all
 ```
+
+### api-gateway
