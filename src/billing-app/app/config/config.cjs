@@ -1,11 +1,20 @@
-require("dotenv").config({ path: "../../../../.env" });
+require("dotenv").config({ path: "../../.env" });
 
-module.exports = {
-  development: {
-    username: process.env.BILLING_DB_USER || "billing_user",
-    password: process.env.BILLING_DB_PASSWORD || "billing_password",
-    database: process.env.BILLING_DB_NAME || "orders",
-    host: process.env.BILLING_DB_HOST || "localhost",
+const configEnvironment = process.env.ENVIRONMENT;
+
+if (configEnvironment !== "DEVELOPMENT" && configEnvironment !== "PRODUCTION") {
+  console.warn("ENVIRONMENT must be either DEVELOPMENT or PRODUCTION. Defaulting to DEVELOPMENT");
+}
+
+const envPrefix = configEnvironment === "DEVELOPMENT" ? "DEV_" : "PROD_";
+
+const config = {
+  envValues: {
+    username: process.env[`${envPrefix}BILLING_DB_USER`],
+    password: process.env[`${envPrefix}BILLING_DB_PASSWORD`],
+    database: process.env[`${envPrefix}BILLING_DB_NAME`],
+    host: process.env[`${envPrefix}BILLING_DB_HOST`],
+    port: process.env[`${envPrefix}BILLING_DB_PORT`],
     dialect: "postgres",
     pool: {
       max: 5,
@@ -15,3 +24,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = config;

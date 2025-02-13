@@ -2,7 +2,7 @@ import Sequelize from "sequelize";
 import config from "../config/config.cjs";
 import defineOrder from "./order.model.js";
 
-const dbConfig = config.development;
+const dbConfig = config.envValues;
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
   host: dbConfig.host,

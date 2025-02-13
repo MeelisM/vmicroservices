@@ -7,6 +7,7 @@ import yaml from "js-yaml";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import gatewayConfig from "./config/gateway.config.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,11 +16,10 @@ const app = express();
 
 const openApiDocument = yaml.load(readFileSync(join(__dirname, "openapi.yaml"), "utf8"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiDocument));
-
 app.use(morgan("dev"));
 
 const proxyOptions = {
-  target: "http://localhost:8080/api/movies",
+  target: gatewayConfig.inventoryUrl,
   changeOrigin: true,
 };
 
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/billing", router);
 
-app.listen(8000, () => {
-  console.log("API Gateway is running on port 8000");
-  console.log(`API Documentation available at http://localhost:8000/api-docs`);
+app.listen(gatewayConfig.port, () => {
+  console.log(`API Gateway is running on port ${gatewayConfig.port}`);
+  console.log(`API Documentation available at http://localhost:${gatewayConfig.port}/api-docs`);
 });

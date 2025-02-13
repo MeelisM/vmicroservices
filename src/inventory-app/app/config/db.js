@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import config from "./config.cjs";
 
-const dbConfig = config.development;
+const dbConfig = config.envValues;
 
 export async function checkDatabaseExists() {
   const tempSequelize = new Sequelize({
