@@ -1,6 +1,4 @@
 #!/bin/bash
-set -x  # Enable debug mode
-
 # Function to load environment variables
 load_env_vars() {
     local current_dir="$1"
