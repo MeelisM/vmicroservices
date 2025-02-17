@@ -153,10 +153,6 @@ vagrant ssh <vm-name> # SSH into specific VM
 sudo pm2 list # Check running services
 ```
 
-### Service Configuration
-
-[Production environment configuration for all services...]
-
 ## API Documentation
 
 The API documentation is available in OpenAPI (Swagger) format.
