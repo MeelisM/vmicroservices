@@ -16,31 +16,41 @@ A simple microservices infrastructure. All services are encapsulated in differen
 
 ### billing-app
 
-TBA
-
 ### inventory-app
+
+Navigate to the correct directory.
+
+```bash
+cd src/inventory-app/
+```
+
+Install the required packages.
+
+```bash
+npm install
+```
 
 Start the server.
 
-```
+```bash
 npm run start
 ```
 
 Run database migrations.
 
-```
+```bash
 npm run db:migrate
 ```
 
 Roll back the last database migration.
 
-```
+```bash
 npm run db:migrate:undo
 ```
 
 Roll back all database migrations.
 
-```
+```bash
 npm run db:migrate:undo:all
 ```
 

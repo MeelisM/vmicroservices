@@ -18,7 +18,7 @@ export async function checkDatabaseExists() {
 
     if (results.length === 0) {
       throw new Error(
-        `Database ${dbConfig.database} does not exist. Run billing-db-setup.sh first.`
+        `Database ${dbConfig.database} does not exist. Run setup-billing-db.sh first.`
       );
     }
 
