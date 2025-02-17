@@ -17,6 +17,15 @@ npm install -g pm2
 systemctl start rabbitmq-server
 systemctl enable rabbitmq-server
 
+# Create RabbitMQ user
+rabbitmqctl add_user rabbit_user rabbit_password
+
+# Set the user as an administrator (optional)
+rabbitmqctl set_user_tags rabbit_user administrator
+
+# Grant the user permissions
+rabbitmqctl set_permissions -p / rabbit_user ".*" ".*" ".*"
+
 # Load environment variables
 ENV_FILE="/home/vagrant/app/.env"
 if [ -f "$ENV_FILE" ]; then

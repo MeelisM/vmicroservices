@@ -19,6 +19,7 @@ const envPrefix = configEnvironment === "DEVELOPMENT" ? "DEV_" : "PROD_";
 const gatewayConfig = {
   port: process.env[`${envPrefix}GATEWAY_PORT`],
   inventoryUrl: process.env[`${envPrefix}INVENTORY_URL`],
+  baseUrl: process.env[`${envPrefix}GATEWAY_BASE_URL`],
 };
 
 export default gatewayConfig;

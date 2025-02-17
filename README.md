@@ -1,20 +1,22 @@
 # crud-master
 
+A simple microservices infrastructure. All services are encapsulated in different virtual machines. <br>
+!! ------> For the purpose of this exercise, the .env file is included in the repository <------ !!
+
+![image](/images/diagram.jpg)
+
 ## Table of contents
 
-- Application
-  - [Diagram](#diagram)
+- [Applications](#applications)
   - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
   - [api-gateway](#api-gateway)
 
-## Application
-
-### Diagram
-
-![image](/images/diagram.jpg)
+## Applications
 
 ### billing-app
+
+TBA
 
 ### inventory-app
 
@@ -43,3 +45,5 @@ npm run db:migrate:undo:all
 ```
 
 ### api-gateway
+
+TBA

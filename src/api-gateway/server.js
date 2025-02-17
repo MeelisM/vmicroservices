@@ -29,6 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/billing", router);
 
 app.listen(gatewayConfig.port, () => {
-  console.log(`API Gateway is running on port ${gatewayConfig.port}`);
-  console.log(`API Documentation available at http://localhost:${gatewayConfig.port}/api-docs`);
+  console.log(`##### API Gateway is running on port ${gatewayConfig.port}`);
+  console.log(
+    `##### API Documentation available at ${gatewayConfig.baseUrl}:${gatewayConfig.port}/api-docs`
+  );
 });

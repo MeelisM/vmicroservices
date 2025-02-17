@@ -4,9 +4,8 @@ import { processOrder } from "../controllers/order.controller.js";
 
 export async function setupMessageQueue() {
   try {
-    const connection = await amqp.connect(rabbitmqConfig.url);
+    const connection = await amqp.connect(rabbitmqConfig.localUrl);
     const channel = await connection.createChannel();
-
     await channel.assertQueue(rabbitmqConfig.queue, {
       durable: true,
     });
