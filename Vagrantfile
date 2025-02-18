@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
         ".git/",
         "node_modules/"
       ]
-    gateway.vm.provision "shell", path: "scripts/gateway-app/setup-gateway.sh"
+    gateway.vm.provision "shell", path: "scripts/api-gateway/setup-gateway.sh"
     gateway.vm.post_up_message = "Gateway VM started successfully!"
     gateway.vm.boot_timeout = 600
   end
@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
         "src/billing-app/",
         "src/api-gateway/",
         "scripts/billing-app/",
-        "scripts/gateway-app/",
+        "scripts/api-gateway/",
         ".git/",
         "node_modules/"
       ]
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
         "src/inventory-app/",
         "src/api-gateway/",
         "scripts/inventory-app/",
-        "scripts/gateway-app/",
+        "scripts/api-gateway/",
         ".git/",
         "node_modules/"
       ]

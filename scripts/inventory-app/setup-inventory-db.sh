@@ -73,5 +73,5 @@ sudo -u postgres psql -d ${INVENTORY_DB_NAME} << EOF
 GRANT ALL ON SCHEMA public TO ${INVENTORY_DB_USER};
 EOF
 
-echo -e "${LIGHTGREEN}##### Billing database setup completed successfully! #####${NC}"
-echo -e "${LIGHTGREEN}##### setup-inventory-db.sh script finished! #####${NC}"
+echo -e "${LIGHTGREEN}##### inventory-app database setup completed successfully! #####${NC}"
+echo -e "${LIGHTGREEN}##### setup-inventory-db script finished! #####${NC}"

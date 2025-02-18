@@ -71,4 +71,5 @@ sudo -u postgres psql -d ${BILLING_DB_NAME} << EOF
 GRANT ALL ON SCHEMA public TO ${BILLING_DB_USER};
 EOF
 
-echo -e "${LIGHTGREEN}##### Billing database setup completed successfully! #####${NC}"
+echo -e "${LIGHTGREEN}##### billing-app database setup completed successfully! #####${NC}"
+echo -e "${LIGHTGREEN}##### setup-billing-db script finished! #####${NC}"
