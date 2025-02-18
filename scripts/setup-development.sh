@@ -3,7 +3,7 @@
 LIGHTGREEN='\033[1;32m' # Success message
 LIGHTBLUE='\033[1;36m' # General message
 NC='\033[0m' # No Color 
-PROJECT_ROOT=$(git rev-parse --show-toplevel)
+PROJECT_ROOT=$(git rev-parse --show-toplevel) # Get root dir
 
 echo -e "${LIGHTBLUE}Starting the setup-development script!${NC}"
 

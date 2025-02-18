@@ -41,6 +41,12 @@ This project can be run in either development or production mode. The mode is co
 
 For this exercise, a pre-filled `.env` file is included in the repository.
 
+If you have a local PostgreSQL database installed, the easiest way to get everything up and running is to run a single script that installs all the required packages, creates databases with users, performs database migrations and starts all 3 applications. Make sure that the `.env` file `ENVIRONMENT` value is set to `DEVELOPMENT`.
+
+```
+./scripts/setup-development.sh
+```
+
 ### billing-app
 
 Set the production environment variable in the `.env` file.
