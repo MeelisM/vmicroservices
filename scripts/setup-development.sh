@@ -33,6 +33,17 @@ echo -e "${LIGHTBLUE}Setting up billing-app database...${NC}"
 chmod +x setup-billing-db.sh
 ./setup-billing-db.sh
 
+# Start inventory-app and billing-app migrations
+echo -e "${LIGHTBLUE}inventory-app database migration...${NC}"
+cd "$PROJECT_ROOT/src/inventory-app/"
+npm run db:migrate
+sleep 2
+
+echo -e "${LIGHTBLUE}billing-app database migration...${NC}"
+cd "$PROJECT_ROOT/src/billing-app/"
+npm run db:migrate
+sleep 2
+
 # Start inventory-app, billing-app and api-gateway 
 echo -e "${LIGHTBLUE}Starting inventory-app...${NC}"
 cd "$PROJECT_ROOT/src/inventory-app/"
@@ -48,6 +59,6 @@ echo -e "${LIGHTBLUE}Starting api-gateway...${NC}"
 cd "$PROJECT_ROOT/src/api-gateway/"
 npm run start &
 sleep 2
-echo -e "${LIGHTGREEN}##### inventory-app, billing-app and api-gateway are up and running! #####${NC}"
+echo -e "${LIGHTGREEN}##### Everything is up and running! #####${NC}"
 
 wait
