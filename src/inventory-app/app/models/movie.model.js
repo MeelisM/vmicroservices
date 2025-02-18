@@ -14,7 +14,7 @@ const defineMovie = (sequelize, Sequelize) => {
     },
     description: {
       type: Sequelize.TEXT,
-      allowNull: true,
+      allowNull: false,
     },
   });
   return Movie;

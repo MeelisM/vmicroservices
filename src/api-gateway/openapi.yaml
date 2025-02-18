@@ -1,13 +1,17 @@
 openapi: 3.0.0
 info:
-  title: Movie Streaming Platform API
-  description: API for managing movies and processing orders
+  title: Crud Master API
+  description:  A microservices-based API for a movie streaming platform. The architecture consists of:
+    
+    - API Gateway: Entry point for all requests
+    - Inventory Service: Manages movie catalog (CRUD operations)
+    - Billing Service: Processes orders through RabbitMQ message queue
+    
+    All services are deployed across separate virtual machines for isolation and scalability.
   version: 1.0.0
-
 servers:
-  - url: http://localhost:8000
-    description: Development server
-
+  - url: http://192.168.56.10:8000
+    description: Production server
 paths:
   /api/movies:
     get:
@@ -21,7 +25,18 @@ paths:
       responses:
         "200":
           description: List of movies
-
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Movie"
+              example:
+                - id: 1
+                  title: "Rambo"
+                  description: "Very short description"
+                  createdAt: "2025-02-18T13:13:00.628Z"
+                  updatedAt: "2025-02-18T13:13:00.628Z"
     post:
       summary: Create a new movie
       requestBody:
@@ -29,21 +44,31 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                description:
-                  type: string
+              $ref: "#/components/schemas/MovieInput"
+            example:
+              title: "New Movie"
+              description: "Movie Description"
       responses:
         "201":
           description: Movie created successfully
-
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Movie"
     delete:
       summary: Delete all movies
       responses:
         "200":
           description: All movies deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: "All movies were deleted successfully"
 
   /api/movies/{id}:
     get:
@@ -57,7 +82,12 @@ paths:
       responses:
         "200":
           description: Movie details
-
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Movie"
+        "404":
+          description: Movie not found
     put:
       summary: Update movie by ID
       parameters:
@@ -71,16 +101,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                title:
-                  type: string
-                description:
-                  type: string
+              $ref: "#/components/schemas/MovieInput"
       responses:
         "200":
           description: Movie updated successfully
-
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Movie"
     delete:
       summary: Delete movie by ID
       parameters:
@@ -92,6 +120,15 @@ paths:
       responses:
         "200":
           description: Movie deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: "Movie was deleted successfully"
 
   /api/billing:
     post:
@@ -101,20 +138,69 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                user_id:
-                  type: string
-                number_of_items:
-                  type: integer
-                total_amount:
-                  type: number
-              required:
-                - user_id
-                - number_of_items
-                - total_amount
+              $ref: "#/components/schemas/OrderInput"
+            example:
+              user_id: "3"
+              number_of_items: 5
+              total_amount: 180
       responses:
         "200":
           description: Order queued successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: "Order has been queued for processing"
         "500":
           description: Error processing order
+
+components:
+  schemas:
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - title
+        - description
+
+    MovieInput:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+      required:
+        - title
+        - description
+
+    OrderInput:
+      type: object
+      properties:
+        user_id:
+          type: string
+        number_of_items:
+          type: integer
+        total_amount:
+          type: number
+      required:
+        - user_id
+        - number_of_items
+        - total_amount

@@ -84,14 +84,15 @@ const findOne = async (req, res) => {
 const update = async (req, res) => {
   try {
     const id = req.params.id;
+
     const [num] = await Movie.update(req.body, {
       where: { id: id },
     });
 
     if (num === 1) {
-      res.send({
-        message: "Movie was updated successfully",
-      });
+      const updatedMovie = await Movie.findByPk(id);
+
+      res.send(updatedMovie);
     } else {
       res.status(404).send({
         message: `Cannot update movie with id=${id}. Movie was not found.`,

@@ -17,7 +17,7 @@ async function initializeApp() {
     await setupMessageQueue();
     console.log("##### Message queue setup completed");
 
-    const PORT = process.env.BILLING_PORT || 8081;
+    const PORT = process.env.BILLING_PORT;
     app.listen(PORT, () => {
       console.log(`##### Billing service is running on port ${PORT}`);
       console.log("##### CTRL + C to quit.");

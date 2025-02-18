@@ -17,6 +17,7 @@ For the purpose of this exercise, the .env file is included in the repository.
   - [System Requirements](#system-requirements)
   - [Vagrant Setup](#vagrant-setup)
 - [API Documentation](#api-documentation)
+- [Testing and Documentation Tools](#testing-and-documentation-tools)
 
 ## Core Technologies
 
@@ -26,6 +27,7 @@ For the purpose of this exercise, the .env file is included in the repository.
 - VirtualBox
 - Vagrant
 - PM2
+- Postman
 
 ## Installation: Development
 
@@ -190,7 +192,14 @@ sudo pm2 list # Check running services
 
 ## API Documentation
 
-The API documentation is available in OpenAPI (Swagger) format.
+The API is documented using OpenAPI 3.0 specification (`openapi.yaml`). The documentation includes:
+
+- Complete endpoint descriptions
+- equest/response schemas
+- Example payloads
+- Error responses
+
+The documentation runs on the `Gateway VM` and provides a comprehensive overview of all available endpoints and their functionality.
 
 ### Development Environment:
 
@@ -203,3 +212,41 @@ http://localhost:8000/api-docs
 ```http
 https://192.168.56.10:8000/api-docs
 ```
+
+## Testing and Documentation Tools
+
+### Postman Collections
+
+The project includes comprehensive Postman collections for testing all API endpoints:
+
+- Gateway Tests
+  - Movies (CRUD operations)
+  - Billing (Order creation)
+- Direct API Tests
+  - Inventory API (direct testing of movie service)
+- Test Suites
+  - Movie CRUD sequence
+    1. DELETE All Movies (Clean Start)
+    2. GET All Movies (Verify Empty)
+    3. Create Movie
+    4. Get Movie by ID
+    5. Update Movie by ID
+    6. Get Movie by Title
+    7. Delete Movie by ID
+
+### Testing RabbitMQ Queue
+
+To test the billing queue functionality:
+
+- Send order while billing-app is running
+
+  - Verify order appears in database
+
+- Stop billing-app: `pm2 stop billing-app`
+
+  - Send order
+  - Verify Gateway accepts it
+
+- Start billing-app: `pm2 start billing-app`
+
+  - Verify queued order appears in database
