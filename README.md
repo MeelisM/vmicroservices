@@ -14,6 +14,7 @@ For the purpose of this exercise, the .env file is included in the repository.
   - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
   - [api-gateway](#api-gateway)
+- [Database Migrations](#database-migrations)
 - [Installation: Production](#installation-production)
   - [Vagrant Setup](#vagrant-setup)
 - [API Documentation](#api-documentation)
@@ -74,6 +75,12 @@ Setup the database.
  cd ../.. && ./scripts/billing-app/setup-billing-db.sh
 ```
 
+Run database migrations.
+
+```bash
+cd src/inventory-app/ && npm run db:migrate
+```
+
 Start the server.
 
 ```bash
@@ -100,28 +107,16 @@ Setup the database.
  cd ../.. && ./scripts/inventory-app/setup-inventory-db.sh
 ```
 
+Run database migrations.
+
+```bash
+cd src/inventory-app/ && npm run db:migrate
+```
+
 Start the server.
 
 ```bash
 npm run start
-```
-
-Run database migrations.
-
-```bash
-npm run db:migrate
-```
-
-Roll back the last database migration.
-
-```bash
-npm run db:migrate:undo
-```
-
-Roll back all database migrations.
-
-```bash
-npm run db:migrate:undo:all
 ```
 
 ### api-gateway
@@ -142,6 +137,28 @@ Start the server.
 
 ```bash
 npm run start
+```
+
+## Database Migrations
+
+`billing-app` and `inventory-app` use PostgreSQL database and have migrations set up with `Sequalize`. Make sure to be in the correct application folder.
+
+Run database migrations
+
+```bash
+npm run db:migrate
+```
+
+Roll back the last database migration.
+
+```bash
+npm run db:migrate:undo
+```
+
+Roll back all database migrations.
+
+```bash
+npm run db:migrate:undo:all
 ```
 
 ## Installation: Production
