@@ -7,8 +7,7 @@ For the purpose of this exercise, the .env file is included in the repository.
 
 ## Table of contents
 
-- [Requirements](#requirements)
-  - [Core Technologies](#core-technologies)
+- [Core Technologies](#core-technologies)
 - [Installation: Development](#installation-development)
   - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
@@ -19,9 +18,7 @@ For the purpose of this exercise, the .env file is included in the repository.
   - [Vagrant Setup](#vagrant-setup)
 - [API Documentation](#api-documentation)
 
-## Requirements
-
-### Core Technologies
+## Core Technologies
 
 - Node.js
 - PostgreSQL
