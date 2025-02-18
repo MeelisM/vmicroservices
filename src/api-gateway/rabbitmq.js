@@ -1,14 +1,14 @@
 import amqp from "amqplib";
-import rabbitmqConfig from "./config/rabbitmq.config.js";
+import config from "./config/environment.js";
 
 let channel;
 let connection;
 
 async function connectQueue() {
   try {
-    connection = await amqp.connect(rabbitmqConfig.url);
+    connection = await amqp.connect(config.rabbitmq.localUrl);
     channel = await connection.createChannel();
-    await channel.assertQueue(rabbitmqConfig.queue, { durable: true });
+    await channel.assertQueue(config.rabbitmq.queue, { durable: true });
 
     connection.on("close", async (err) => {
       console.error("RabbitMQ connection closed. Reconnecting...", err);
@@ -29,11 +29,11 @@ async function sendToQueue(data) {
     if (!channel) {
       await connectQueue();
     }
-    console.log(`Sending message to queue: ${rabbitmqConfig.queue}`, data);
-    channel.sendToQueue(rabbitmqConfig.queue, Buffer.from(JSON.stringify(data)), {
+    console.log(`Sending message to queue: ${config.rabbitmq.queue}`, data);
+    channel.sendToQueue(config.rabbitmq.queue, Buffer.from(JSON.stringify(data)), {
       persistent: true,
     });
-    console.log(`Message sent to queue: ${rabbitmqConfig.queue}`);
+    console.log(`Message sent to queue: ${config.rabbitmq.queue}`);
   } catch (error) {
     console.error("Error sending to queue:", error);
   }

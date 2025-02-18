@@ -10,11 +10,11 @@ const defineOrder = (sequelize, Sequelize) => {
       allowNull: false,
     },
     number_of_items: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     total_amount: {
-      type: Sequelize.DECIMAL(10, 2),
+      type: Sequelize.STRING,
       allowNull: false,
     },
   });

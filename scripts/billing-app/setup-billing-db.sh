@@ -30,6 +30,7 @@ load_env_vars() {
             echo -e "${LIGHTBLUE}Environment: $ENVIRONMENT${NC}"
             echo -e "${LIGHTBLUE}BILLING_DB_USER=${BILLING_DB_USER}${NC}"
             echo -e "${LIGHTBLUE}BILLING_DB_NAME=${BILLING_DB_NAME}${NC}"
+            
             return 0
         fi
         current_dir="$(dirname "$current_dir")"

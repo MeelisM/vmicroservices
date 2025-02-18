@@ -1,18 +1,16 @@
 import amqp from "amqplib";
-import rabbitmqConfig from "../config/rabbitmq.js";
+import config from "../config/environment.js";
 import { processOrder } from "../controllers/order.controller.js";
 
 export async function setupMessageQueue() {
   try {
-    const connection = await amqp.connect(rabbitmqConfig.localUrl);
+    const connection = await amqp.connect(config.rabbitmq.localUrl);
     const channel = await connection.createChannel();
-    await channel.assertQueue(rabbitmqConfig.queue, {
+    await channel.assertQueue(config.rabbitmq.queue, {
       durable: true,
     });
-
-    console.log(`##### Waiting for messages in ${rabbitmqConfig.queue}`);
-
-    channel.consume(rabbitmqConfig.queue, async (msg) => {
+    console.log(`##### Waiting for messages in ${config.rabbitmq.queue}`);
+    channel.consume(config.rabbitmq.queue, async (msg) => {
       if (msg !== null) {
         try {
           const orderData = JSON.parse(msg.content.toString());
@@ -23,12 +21,10 @@ export async function setupMessageQueue() {
         }
       }
     });
-
     connection.on("close", (err) => {
       console.error("RabbitMQ connection closed:", err);
       setTimeout(setupMessageQueue, 5000);
     });
-
     return { connection, channel };
   } catch (error) {
     console.error("Error connecting to RabbitMQ:", error);

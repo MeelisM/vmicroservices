@@ -2,6 +2,7 @@ import express from "express";
 import db from "./app/models/index.js";
 import { checkDatabaseExists } from "./app/config/db.js";
 import { setupMessageQueue } from "./app/services/message.service.js";
+import config from "./app/config/environment.js";
 
 const app = express();
 
@@ -17,9 +18,10 @@ async function initializeApp() {
     await setupMessageQueue();
     console.log("##### Message queue setup completed");
 
-    const PORT = process.env.BILLING_PORT;
-    app.listen(PORT, () => {
-      console.log(`##### Billing service is running on port ${PORT}`);
+    const { port, host } = config.server;
+    app.listen(port, () => {
+      console.log(`##### Billing service is running on ${host}:${port}`);
+      console.log(`##### Environment: ${config.environment}`);
       console.log("##### CTRL + C to quit.");
     });
   } catch (err) {

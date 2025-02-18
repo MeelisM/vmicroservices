@@ -195,7 +195,7 @@ sudo pm2 list # Check running services
 The API is documented using OpenAPI 3.0 specification (`openapi.yaml`). The documentation includes:
 
 - Complete endpoint descriptions
-- equest/response schemas
+- Request/response schemas
 - Example payloads
 - Error responses
 
@@ -217,7 +217,7 @@ https://192.168.56.10:8000/api-docs
 
 ### Postman Collections
 
-The project includes comprehensive Postman collections for testing all API endpoints:
+The project includes comprehensive Postman collections for testing all API endpoints. It also includes two sets of environment variables. These can be used to test both `production` and `development` endpoints with the same Postman collection.
 
 - Gateway Tests
   - Movies (CRUD operations)

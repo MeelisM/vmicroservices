@@ -1,12 +1,11 @@
 openapi: 3.0.0
 info:
   title: Crud Master API
-  description:  A microservices-based API for a movie streaming platform. The architecture consists of:
-    
+  description: |
+    A microservices-based API for a movie streaming platform. The architecture consists of:
     - API Gateway: Entry point for all requests
     - Inventory Service: Manages movie catalog (CRUD operations)
     - Billing Service: Processes orders through RabbitMQ message queue
-    
     All services are deployed across separate virtual machines for isolation and scalability.
   version: 1.0.0
 servers:
@@ -141,8 +140,8 @@ paths:
               $ref: "#/components/schemas/OrderInput"
             example:
               user_id: "3"
-              number_of_items: 5
-              total_amount: 180
+              number_of_items: "5"
+              total_amount: "180"
       responses:
         "200":
           description: Order queued successfully
@@ -197,9 +196,9 @@ components:
         user_id:
           type: string
         number_of_items:
-          type: integer
+          type: string
         total_amount:
-          type: number
+          type: string
       required:
         - user_id
         - number_of_items

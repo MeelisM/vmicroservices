@@ -7,7 +7,7 @@ import yaml from "js-yaml";
 import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import gatewayConfig from "./config/gateway.config.js";
+import config from "./config/environment.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,7 +19,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openApiDocument));
 app.use(morgan("dev"));
 
 const proxyOptions = {
-  target: gatewayConfig.inventoryUrl,
+  target: config.server.inventoryUrl,
   changeOrigin: true,
 };
 
@@ -28,9 +28,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/billing", router);
 
-app.listen(gatewayConfig.port, () => {
-  console.log(`##### API Gateway is running on port ${gatewayConfig.port}`);
+app.listen(config.server.port, () => {
+  console.log(`##### API Gateway is running on ${config.server.host} ${config.server.port}`);
   console.log(
-    `##### API Documentation available at ${gatewayConfig.baseUrl}:${gatewayConfig.port}/api-docs`
+    `##### API Documentation available at ${config.server.host}:${config.server.port}/api-docs`
   );
 });

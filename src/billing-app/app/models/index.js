@@ -1,8 +1,8 @@
 import Sequelize from "sequelize";
-import config from "../config/config.cjs";
+import config from "../config/environment.js";
 import defineOrder from "./order.model.js";
 
-const dbConfig = config.envValues;
+const dbConfig = config.database;
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
   host: dbConfig.host,
