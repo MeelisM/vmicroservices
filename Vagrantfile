@@ -57,5 +57,4 @@ Vagrant.configure("2") do |config|
     billing.vm.post_up_message = "Billing VM started successfully!"
     billing.vm.boot_timeout = 600
   end
-config.vm.post_up_message = "All 3 virtual machines started successfully! If you see errors, manually check VirtualBox."
 end

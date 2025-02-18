@@ -32,20 +32,22 @@ For the purpose of this exercise, the .env file is included in the repository.
 ### System Requirements
 
 - Minimum 4GB RAM (for running 3 VMs).
-- 10GB available disk space.
+- ~10GB available disk space.
 - Processor with virtualization support enabled.
 
 ## Installation: Development
 
 This project can be run in either development or production mode. The mode is controlled by the `ENVIRONMENT` variable in the `.env` file.
 
-For this exercise, a pre-filled `.env` file is included in the repository. You only need to set:
+For this exercise, a pre-filled `.env` file is included in the repository.
+
+### billing-app
+
+Set the production environment variable in the `.env` file.
 
 ```bash
 ENVIRONMENT=DEVELOPMENT
 ```
-
-### billing-app
 
 Navigate to the correct directory.
 
@@ -127,7 +129,7 @@ npm run start
 
 ### Vagrant Setup
 
-Set the environment variable in `.env`.
+Set the production environment variable in the `.env` file.
 
 ```bash
 ENVIRONMENT=PRODUCTION
