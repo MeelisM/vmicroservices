@@ -41,7 +41,8 @@ This project can be run in either development or production mode. The mode is co
 
 For this exercise, a pre-filled `.env` file is included in the repository.
 
-If you have a local PostgreSQL database installed, the easiest way to get everything up and running is to run a single script that installs all the required packages, creates databases with users, performs database migrations and starts all 3 applications. Make sure that the `.env` file `ENVIRONMENT` value is set to `DEVELOPMENT`.
+The easiest way to get everything up and running is to run a single script that installs all the required packages, creates databases with users, performs database migrations and starts all 3 applications. Make sure that the `.env` file `ENVIRONMENT` value is set to `DEVELOPMENT`.<br>
+If you don't have a local PostgreSQL database set up, be sure to update the `.env` file.
 
 ```
 ./scripts/setup-development.sh
@@ -67,6 +68,12 @@ Install the required packages.
 npm install
 ```
 
+Setup the database.
+
+```bash
+./scripts/billing-app/setup-billing-db.sh
+```
+
 Start the server.
 
 ```bash
@@ -85,6 +92,12 @@ Install the required packages.
 
 ```bash
 npm install
+```
+
+Setup the database.
+
+```bash
+./scripts/inventory-app/setup-inventory-db.sh
 ```
 
 Start the server.
