@@ -234,10 +234,7 @@ The project includes comprehensive Postman collections for testing all API endpo
     6. Get Movie by Title
     7. Delete Movie by ID
 
-<details>
-<summary>Click to view Postman image</summary>
-![image](/images/postman.png)
-</details>
+[Click to view Postman image](/images/postman.png)
 
 ### Testing RabbitMQ Queue
 
