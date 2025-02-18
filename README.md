@@ -42,7 +42,7 @@ This project can be run in either development or production mode. The mode is co
 For this exercise, a pre-filled `.env` file is included in the repository.
 
 The easiest way to get everything up and running is to run a single script that installs all the required packages, creates databases with users, performs database migrations and starts all 3 applications. Make sure that the `.env` file `ENVIRONMENT` value is set to `DEVELOPMENT`.<br>
-If you don't have a local PostgreSQL database set up, be sure to update the `.env` file.
+If you don't have a local PostgreSQL database set up, be sure to update the `.env` file. For both development and production, databases run locally.
 
 ```
 ./scripts/setup-development.sh
