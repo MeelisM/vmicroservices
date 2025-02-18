@@ -9,13 +9,13 @@ For the purpose of this exercise, the .env file is included in the repository.
 
 - [Requirements](#requirements)
   - [Core Technologies](#core-technologies)
-  - [System Requirements](#system-requirements)
 - [Installation: Development](#installation-development)
   - [billing-app](#billing-app)
   - [inventory-app](#inventory-app)
   - [api-gateway](#api-gateway)
 - [Database Migrations](#database-migrations)
 - [Installation: Production](#installation-production)
+  - [System Requirements](#system-requirements)
   - [Vagrant Setup](#vagrant-setup)
 - [API Documentation](#api-documentation)
 
@@ -29,12 +29,6 @@ For the purpose of this exercise, the .env file is included in the repository.
 - VirtualBox
 - Vagrant
 - PM2
-
-### System Requirements
-
-- Minimum 4GB RAM (for running 3 VMs).
-- ~10GB available disk space.
-- Processor with virtualization support enabled.
 
 ## Installation: Development
 
@@ -162,6 +156,12 @@ npm run db:migrate:undo:all
 ```
 
 ## Installation: Production
+
+### System Requirements
+
+- Minimum 4GB RAM (for running 3 VMs).
+- ~10GB available disk space.
+- Processor with virtualization support enabled.
 
 ### Vagrant Setup
 
