@@ -162,7 +162,7 @@ npm run db:migrate:undo:all
 
 ### Vagrant Setup
 
-Set the production environment variable in the `.env` file.
+Set the environment variable in the `.env` file.
 
 ```bash
 ENVIRONMENT=PRODUCTION
