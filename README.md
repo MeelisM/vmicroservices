@@ -71,7 +71,7 @@ npm install
 Setup the database.
 
 ```bash
-./scripts/billing-app/setup-billing-db.sh
+ cd ../.. && ./scripts/billing-app/setup-billing-db.sh
 ```
 
 Start the server.
@@ -97,7 +97,7 @@ npm install
 Setup the database.
 
 ```bash
-./scripts/inventory-app/setup-inventory-db.sh
+ cd ../.. && ./scripts/inventory-app/setup-inventory-db.sh
 ```
 
 Start the server.
