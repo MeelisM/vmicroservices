@@ -244,11 +244,11 @@ To test the billing queue functionality:
 
   - Verify order appears in database
 
-- Stop billing-app: `pm2 stop billing-app`
+- Stop billing-app: `pm2 stop billing-api`
 
   - Send order
   - Verify Gateway accepts it
 
-- Start billing-app: `pm2 start billing-app`
+- Start billing-app: `pm2 start billing-api`
 
   - Verify queued order appears in database
