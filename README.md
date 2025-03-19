@@ -1,4 +1,4 @@
-# crud-master
+# VMicroservices
 
 A simple microservices infrastructure. All services are encapsulated in different virtual machines. <br>
 For the purpose of this exercise, the .env file is included in the repository.
